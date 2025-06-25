@@ -1,0 +1,41 @@
+{
+  "name": "shawfix-packages",
+  "version": "0.0.1",
+  "repository": "git@github.com:shawfix/shawfix-packages.git",
+  "author": "Shawfix <shawliu996@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "19.4.0",
+    "@commitlint/config-conventional": "19.2.2",
+    "@types/node": "24.0.4",
+    "commitizen": "4.3.0",
+    "compare-func": "2.0.0",
+    "conventional-changelog": "7.1.0",
+    "conventional-changelog-cli": "5.0.0",
+    "conventional-changelog-custom-config": "0.3.1",
+    "eslint": "^8",
+    "eslint-config-next": "15.0.3",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-config-shaw": "0.0.3",
+    "eslint-plugin-import": "2.29.1",
+    "eslint-plugin-prettier": "5.2.1",
+    "eslint-plugin-sort-destructure-keys": "2.0.0",
+    "eslint-plugin-sort-keys-fix": "1.1.2",
+    "eslint-plugin-unicorn": "55.0.0",
+    "eslint-plugin-unused-imports": "4.1.3",
+    "git-cz": "4.9.0",
+    "husky": "9.1.5",
+    "lint-staged": "15.2.9",
+    "prettier": "3.3.3",
+    "typescript": "5.8.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/git-cz"
+    }
+  },
+  "scripts": {
+    "changelog": "conventional-changelog -p custom-config -i CHANGELOG.md -s -r 0  -n ./changelog-option.js",
+    "prepare": "npx husky install"
+  }
+}
