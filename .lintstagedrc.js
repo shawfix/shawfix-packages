@@ -22,7 +22,7 @@ const lintStaged = {
   '**/*.{cjs,mjs,js,ts,jsx,tsx,vue}': async (files) => {
     const filesToLint = await removeIgnoredFiles(files);
 
-    return [`npx eslint -c .eslintrc --max-warnings=0 --fix ${filesToLint}`];
+    return [`npx eslint -c eslint.config.js --max-warnings=0 --fix ${filesToLint}`];
   },
   '**/*.{json,md}': async (files) => {
     const filesToLint = await removeIgnoredFiles(files);

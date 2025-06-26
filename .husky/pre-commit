@@ -4,5 +4,5 @@ if [ -t 2 ]; then
   2>&1
 fi
 
+npx lint-staged -c .lintstagedrc.js
 npm run changelog
-npx lint-staged -c .lintstagedrc.mjs

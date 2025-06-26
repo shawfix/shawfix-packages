@@ -4,38 +4,50 @@
   "repository": "git@github.com:shawfix/shawfix-packages.git",
   "author": "Shawfix <shawliu996@gmail.com>",
   "license": "MIT",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:ac": "npx vite -c ./packages/shawfix-ac/vite.config.ts",
+    "changelog": "conventional-changelog -p custom-config -i CHANGELOG.md -s -r 0  -n ./changelog-option.cjs",
+    "prepare": "npx husky install"
+  },
+  "dependencies": {
+    "antd": "5.26.2",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-router": "7.6.2"
+  },
   "devDependencies": {
     "@commitlint/cli": "19.4.0",
     "@commitlint/config-conventional": "19.2.2",
+    "@eslint/js": "9.29.0",
     "@types/node": "24.0.4",
+    "@types/react": "19.1.8",
+    "@types/react-dom": "19.1.6",
+    "@vitejs/plugin-react": "4.6.0",
     "commitizen": "4.3.0",
     "compare-func": "2.0.0",
     "conventional-changelog": "7.1.0",
     "conventional-changelog-cli": "5.0.0",
     "conventional-changelog-custom-config": "0.3.1",
-    "eslint": "^8",
-    "eslint-config-next": "15.0.3",
-    "eslint-config-prettier": "9.1.0",
-    "eslint-config-shaw": "0.0.3",
-    "eslint-plugin-import": "2.29.1",
-    "eslint-plugin-prettier": "5.2.1",
-    "eslint-plugin-sort-destructure-keys": "2.0.0",
-    "eslint-plugin-sort-keys-fix": "1.1.2",
-    "eslint-plugin-unicorn": "55.0.0",
-    "eslint-plugin-unused-imports": "4.1.3",
+    "eslint": "9.29.0",
+    "eslint-plugin-react-hooks": "5.2.0",
+    "eslint-plugin-react-refresh": "0.4.20",
     "git-cz": "4.9.0",
+    "globals": "16.2.0",
     "husky": "9.1.5",
     "lint-staged": "15.2.9",
     "prettier": "3.3.3",
-    "typescript": "5.8.3"
+    "typescript": "5.8.3",
+    "typescript-eslint": "8.35.0",
+    "vite": "7.0.0"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/git-cz"
     }
-  },
-  "scripts": {
-    "changelog": "conventional-changelog -p custom-config -i CHANGELOG.md -s -r 0  -n ./changelog-option.js",
-    "prepare": "npx husky install"
   }
 }

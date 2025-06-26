@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-require-imports
 const compareFunc = require('compare-func');
 
 module.exports = {
@@ -11,6 +10,8 @@ module.exports = {
     transform: (commit, context) => {
       let discard = true;
       const issues = [];
+
+      commit = JSON.parse(JSON.stringify(commit));
 
       commit.notes.forEach((note) => {
         note.title = 'BREAKING CHANGES';
