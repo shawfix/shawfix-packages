@@ -1,37 +1,50 @@
-import { Button, Form, Input, Row, Space, Table, type FormProps, type TableProps } from 'antd';
+import {
+  Avatar,
+  Button,
+  Form,
+  Input,
+  Row,
+  Space,
+  Table,
+  Tag,
+  type FormProps,
+  type TableProps,
+} from 'antd';
 import type { TableRowSelection } from 'antd/es/table/interface';
 import { useState } from 'react';
+
+import { UserOutlined } from '@ant-design/icons';
+
+import { EnabledEn } from '../../enums/EnabledEn';
+
+import { RolesMock } from '../../mocks/RolesMock';
+import { UsersMock } from '../../mocks/UsersMock';
+
+import type { UserResponse } from '../../models/response/UserResponse';
 
 type FieldType = {
   query: string;
 };
 
-type UserType = {
-  id: string;
-  name: string;
-  email: string;
-  createdTime: string;
-  modifiedTime: string;
-  status: number;
-};
+const dataSource = UsersMock;
 
-const dataSource = Array.from({ length: 46 }).map<UserType>((_, i) => ({
-  key: i,
-  id: i + '',
-  name: `Shawfix${i}`,
-  email: 'shawfix@gmail.com',
-  createdTime: '2025-06-26 18:20',
-  modifiedTime: '2025-06-26 18:20',
-  status: 1,
-}));
-
-const columns: TableProps<UserType>['columns'] = [
+const columns: TableProps<UserResponse>['columns'] = [
   {
-    title: '用户名',
-    dataIndex: 'name',
-    key: 'name',
-    width: 180,
+    title: '用户',
+    dataIndex: 'user',
+    key: 'user',
+    width: 240,
     fixed: 'left',
+    render: (_, record) => (
+      <Space size="middle">
+        {record.avatar ? (
+          <Avatar src={record.avatar} />
+        ) : (
+          <Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
+        )}
+        <span>{record.name}</span>
+      </Space>
+    ),
   },
   {
     title: '邮箱',
@@ -45,16 +58,59 @@ const columns: TableProps<UserType>['columns'] = [
     dataIndex: 'status',
     key: 'status',
     width: 150,
+    render: (_, record) =>
+      record.status === EnabledEn.Enabled ? (
+        <Tag color="#87d068">启用</Tag>
+      ) : (
+        <Tag color="default">停用</Tag>
+      ),
+  },
+  {
+    title: '角色',
+    dataIndex: 'roles',
+    key: 'roles',
+    width: 320,
+    render: (_, record) => (
+      <Space className="flex-wrap max-w-80">
+        {Object.entries(RolesMock).map(([key, value]) => {
+          return record.access & value ? <Tag color="default">{key}</Tag> : null;
+        })}
+        {Object.entries(RolesMock).map(([key, value]) => {
+          return record.access & value ? <Tag color="default">{key}</Tag> : null;
+        })}
+        {Object.entries(RolesMock).map(([key, value]) => {
+          return record.access & value ? <Tag color="default">{key}</Tag> : null;
+        })}
+        {Object.entries(RolesMock).map(([key, value]) => {
+          return record.access & value ? <Tag color="default">{key}</Tag> : null;
+        })}
+        {Object.entries(RolesMock).map(([key, value]) => {
+          return record.access & value ? <Tag color="default">{key}</Tag> : null;
+        })}
+        {Object.entries(RolesMock).map(([key, value]) => {
+          return record.access & value ? <Tag color="default">{key}</Tag> : null;
+        })}
+        {Object.entries(RolesMock).map(([key, value]) => {
+          return record.access & value ? <Tag color="default">{key}</Tag> : null;
+        })}
+        {Object.entries(RolesMock).map(([key, value]) => {
+          return record.access & value ? <Tag color="default">{key}</Tag> : null;
+        })}
+        {Object.entries(RolesMock).map(([key, value]) => {
+          return record.access & value ? <Tag color="default">{key}</Tag> : null;
+        })}
+      </Space>
+    ),
   },
   {
     title: '创建时间',
-    dataIndex: 'createdTime',
-    key: 'createdTime',
+    dataIndex: 'createdDate',
+    key: 'createdDate',
   },
   {
     title: '修改时间',
-    dataIndex: 'modifiedTime',
-    key: 'modifiedTime',
+    dataIndex: 'modifiedDate',
+    key: 'modifiedDate',
   },
   {
     title: '操作',
@@ -73,14 +129,14 @@ export default function User(): React.ReactNode {
   const [form] = Form.useForm();
 
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
-  const [selectedRows, setSelectedRows] = useState<UserType[]>([]);
+  const [selectedRows, setSelectedRows] = useState<UserResponse[]>([]);
 
-  const onSelectChange = (newSelectedRowKeys: React.Key[], newSelectedRows: UserType[]) => {
+  const onSelectChange = (newSelectedRowKeys: React.Key[], newSelectedRows: UserResponse[]) => {
     console.log('selectedRowKeys changed: ', newSelectedRowKeys);
     setSelectedRowKeys(newSelectedRowKeys);
     setSelectedRows(newSelectedRows);
   };
-  const rowSelection: TableRowSelection<UserType> = {
+  const rowSelection: TableRowSelection<UserResponse> = {
     selectedRowKeys,
     onChange: onSelectChange,
   };
@@ -136,7 +192,7 @@ export default function User(): React.ReactNode {
             </Button>
           </Space>
         </Row>
-        <Table<UserType>
+        <Table<UserResponse>
           dataSource={dataSource}
           columns={columns}
           rowSelection={rowSelection}
