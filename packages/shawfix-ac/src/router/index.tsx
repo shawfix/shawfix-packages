@@ -1,14 +1,31 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router';
 
-import { lazyLoad } from './LazyLoad';
+import { authLoader } from './authLoader';
+import { LayoutMenu } from './LayoutMenu';
+import { LazyLoad } from './LazyLoad';
 
 /**
  * 定义页面路由
  */
 export const router = createBrowserRouter([
+  // {
+  //   path: '/',
+  //   element: LazyLoad(React.lazy(() => import('../pages/welcome/Welcome'))),
+  // },
   {
     path: '/',
-    element: lazyLoad(React.lazy(() => import('../pages/welcome/Welcome'))),
+    loader: authLoader,
+    element: <LayoutMenu />,
+    children: [
+      {
+        path: '/',
+        element: LazyLoad(React.lazy(() => import('../pages/welcome/Welcome'))),
+      },
+      {
+        path: '/user',
+        element: LazyLoad(React.lazy(() => import('../pages/user/User'))),
+      },
+    ],
   },
 ]);

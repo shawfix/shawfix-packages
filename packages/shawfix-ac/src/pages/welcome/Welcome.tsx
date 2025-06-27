@@ -9,9 +9,8 @@ export default function Welcome() {
   const [count, setCount] = useState(0);
 
   return (
-    <>
+    <div className="flex flex-col jusitify-center items-center mx-auto">
       <div>
-        <h1 className="text-3xl font-bold underline">Hello world!</h1>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -27,6 +26,6 @@ export default function Welcome() {
         </p>
       </div>
       <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </>
+    </div>
   );
 }

@@ -14,20 +14,25 @@ function App() {
         cssVar: true,
         hashed: false,
         token: {
-          colorPrimary: '#8a4fe8',
-          colorLink: '#8a4fe8',
-          colorInfo: '#8a4fe8',
+          colorPrimary: '#722ed1',
+          colorLink: '#722ed1',
+          colorInfo: '#722ed1',
         },
         components: {
           Menu: {
-            darkItemBg: '#000',
-            darkItemHoverColor: '#7D33FF',
+            // darkItemBg: '#000',
+            // darkItemHoverColor: '#7D33FF',
+          },
+          Layout: {
+            bodyBg: 'transparent',
+            headerBg: 'transparent',
+            siderBg: 'transparent',
           },
         },
         algorithm: theme.defaultAlgorithm,
       }}
     >
-      <AntdApp>
+      <AntdApp className="w-screen h-screen">
         <RouterProvider router={router} />
       </AntdApp>
     </ConfigProvider>

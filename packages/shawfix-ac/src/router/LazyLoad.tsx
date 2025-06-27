@@ -6,7 +6,7 @@ import SpinLoading from '../components/SpinLoading';
  * @param Component 组件对象
  * @returns 返回新组件
  */
-export function lazyLoad(Component: React.FC, isEditor?: boolean): React.ReactNode {
+export function LazyLoad(Component: React.FC, isEditor?: boolean): React.ReactNode {
   return (
     <Suspense fallback={isEditor ? <SpinLoading size="large" /> : null}>
       <Component />
