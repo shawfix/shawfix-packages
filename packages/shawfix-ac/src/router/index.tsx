@@ -26,6 +26,10 @@ export const router = createBrowserRouter([
         path: '/user',
         element: LazyLoad(React.lazy(() => import('../pages/user/User'))),
       },
+      {
+        path: '/role',
+        element: LazyLoad(React.lazy(() => import('../pages/role/Role'))),
+      },
     ],
   },
 ]);

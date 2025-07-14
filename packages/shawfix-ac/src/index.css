@@ -17,3 +17,33 @@ body {
   height: 100vh;
 }
 
+.ant-table-wrapper-flexible {
+  flex: 1;
+  height: 0;
+}
+
+.ant-table-wrapper-flexible .ant-spin-nested-loading {
+  height: 100%;
+}
+
+.ant-table-wrapper-flexible .ant-spin-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.ant-table-wrapper-flexible .ant-table {
+  flex: 1;
+  height: 0;
+}
+
+.ant-table-wrapper-flexible .ant-table-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.ant-table-wrapper-flexible .ant-table-body {
+  flex: 1;
+  height: 0;
+}

@@ -1,13 +1,14 @@
+import { Button, Layout, Menu, type MenuProps } from 'antd';
+import { useEffect, useState } from 'react';
+import { Outlet, useLocation, useNavigate } from 'react-router';
+
 import {
   HomeOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
+  TeamOutlined,
   UserOutlined,
 } from '@ant-design/icons';
-
-import { Button, Layout, Menu, type MenuProps } from 'antd';
-import { useEffect, useState } from 'react';
-import { Outlet, useLocation, useNavigate } from 'react-router';
 
 const { Header, Sider, Content } = Layout;
 
@@ -23,6 +24,11 @@ const items: MenuItem[] = [
     key: '/user',
     label: '用户管理',
     icon: <UserOutlined />,
+  },
+  {
+    key: '/role',
+    label: '角色管理',
+    icon: <TeamOutlined />,
   },
 ];
 
@@ -71,7 +77,7 @@ export function LayoutMenu(): React.ReactNode {
             onClick={() => setCollapsed(!collapsed)}
           />
         </Header>
-        <Content className="p-4 bg-gray-100">
+        <Content className="p-2 bg-gray-100">
           <Outlet />
         </Content>
       </Layout>

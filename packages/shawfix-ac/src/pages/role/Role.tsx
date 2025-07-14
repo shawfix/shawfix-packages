@@ -125,7 +125,7 @@ const columns: TableProps<UserResponse>['columns'] = [
   },
 ];
 
-export default function User(): React.ReactNode {
+export default function Role(): React.ReactNode {
   const [form] = Form.useForm();
 
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
